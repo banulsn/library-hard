@@ -1,0 +1,35 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <h4 class="mb-5">LIBRARY</h4>
+
+            <div class="mb-5 d-flex align-items-start">
+
+                <div class="w-75 ps-5">
+
+                    Dodaj ksiązkę: <button (click)="addBook()">Dodaj</button>
+
+                    Usuń ksiązkę: <button (click)="removeBook()">Usuń</button>
+
+                    Wypozycz ksiązkę ksiązkę: <button (click)="addBooking()">Wypozycz</button>
+
+                    <!-- Oddaj książkę: <button (click)="removeProduct()">Usuń</button><br> -->
+
+                    <code>
+
+                        <pre>{{library | json}}</pre>
+
+                    </code>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
