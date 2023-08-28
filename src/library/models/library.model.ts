@@ -72,21 +72,17 @@ export class Library {
 
     private manageBookQuantityOnBookingList(quantity: 'increase' | 'decrease', addedBook: Book) {
       this.bookingsList.forEach((bookingList) => {
-        let currentQuantity = 1;
         bookingList.listOfBorowedBook.forEach((book) => {
           if (book.author === addedBook.author && book.title === addedBook.title) {
             switch(quantity) {
               case 'increase':
                 book.quantity++;
-                currentQuantity = book.quantity;
                 break;
                 case 'decrease':
                 book.quantity--
                 break;
             }
-            currentQuantity = book.quantity;
           }
-          addedBook.quantity = currentQuantity;
         });
       });
     }
