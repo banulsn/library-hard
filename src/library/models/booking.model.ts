@@ -34,8 +34,5 @@ export class Booking {
         if (index > -1) {
           this.listOfBorowedBook.splice(index, 1);
         }
-        if (this.bookingDate > this.bookReturnDate) {
-          this.latePaymentPenalty = moment.duration(moment().startOf('day').diff(this.bookReturnDate)).asDays() * 2;
-        }
       }
 }
