@@ -49,12 +49,17 @@ export class LibraryComponent implements OnInit {
     this.library.addBookToLibrary(this.book2);
     this.library.addBookToLibrary(this.book3);
   }
+  
+  removeBook() {
+    this.library.removeBookFromLibrary(this.library.books[1]);
+  }
 
   addBooking() {
     this.library.addBooking(this.library.availableBooks[1], this.user);
   }
 
-  removeBook() {
-    this.library.removeBookFromLibrary(this.library.books[1]);
+  removeBooking() {
+    this.library.removeBooking(this.library.bookingsList[0].listOfBorowedBook[0], this.library.bookUsersList[0]);
   }
+
 }

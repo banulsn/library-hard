@@ -2,6 +2,7 @@ import moment from 'moment';
 import { Book } from "./book.model";
 import { Booking } from "./booking.model";
 import { User } from "./user.model";
+import { LatePaymentPenalty } from './late-payment-penalty.model';
 
 export class Library {
     books: Book[];
@@ -109,17 +110,11 @@ export class Library {
         const userBooking = this.bookingsList[findIndexUserOnBookingList];
         userBooking.removeBookFromBorowedList(book);
         this.addBookToGivenList(book, this.availableBooks);
-        this.manageLatePaymentPenalty(userBooking);
+        userBooking.latePaymentPenalty = LatePaymentPenalty.manageLatePaymentPenalty(userBooking.bookingDate, userBooking.bookReturnDate, 2);
         if (!userBooking.listOfBorowedBook.length && userBooking.latePaymentPenalty === 0) {
           this.bookingsList.splice(findIndexUserOnBookingList, 1);
           this.removeBookUser(user.uuid);
         }
-      }
-    }
-
-    private manageLatePaymentPenalty(userBooking: Booking) {
-      if (userBooking.bookingDate > userBooking.bookReturnDate) {
-        userBooking.latePaymentPenalty = moment.duration(moment().startOf('day').diff(userBooking.bookReturnDate)).asDays() * 2;
       }
     }
 
